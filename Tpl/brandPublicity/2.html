@@ -1,0 +1,58 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>幻影文字</title>
+    <style>
+        .pt40{
+            position: absolute;
+            top: 20;
+            left: 300;
+            width: 300;
+            height: 300;
+            font-size: 40pt;
+            text-align: left;
+            filter: revealTrans(Transition=12, Duration=2)
+        }
+        .pt30{
+            font-size: 50pt;
+            color: red;
+        }
+    </style>
+    <script>
+        function HelpArray(len) {
+            this.length = len
+        }
+        HelpText = new HelpArray(7)
+        HelpText[0] = "通常我们所见的界面的转换都是直接跳过去。"
+        HelpText[1] = "而这个例子中的效果是这样的："
+        HelpText[2] = "前面的慢慢的溶解，后面的慢慢的显现。"
+        HelpText[3] = "我觉得这很有点powerpoint中味道。"
+        HelpText[4] = "用了滤镜后这种效果的实现相当的方便。"
+        HelpText[5] = "而且可以按自己的意愿任意组合变换效果。"
+        HelpText[6] = "烈火学院 www.veryhuo.com 欢迎访问。"
+        var i = -1
+        function playHelp() {
+            if (i == 6) { i = 0 }  //循环显示
+            else {
+                i++
+            }
+            div1.filters[0].apply()
+            div1.innerText = HelpText[i]
+            div1.filters[0].play()
+            mytimeout = setTimeout("playHelp()", 3000)
+        }
+    </script>
+</head>
+
+<body onload="playHelp();">
+    <DIV id="div1" class="pt40" onload="playHelp()">
+    </DIV>
+    <div style="position:absolute;top:330">
+        <p>
+            <font class="pt30">换页的效果,不再那么呆板</font>
+        </p>
+</body>
+
+</html>
